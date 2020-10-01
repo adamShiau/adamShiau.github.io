@@ -22,14 +22,23 @@
 
   <meta name="description" content="差不多一個月前公司接了一個新的專案，客戶要用Lattice FPGA來輸出特定電壓時序至他們的IC，然後再用ADC來讀取資料回傳至PC，希望我們可以幫他們設計電路並洗出開發版。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="專案介紹">
+<meta property="og:title" content="Lattice FPGA 專案介紹">
 <meta property="og:url" content="https://adamshiau.github.io/FPGA/Lattice/%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9/index.html">
 <meta property="og:site_name" content="AdamShiau&#39;s blog 你好">
 <meta property="og:description" content="差不多一個月前公司接了一個新的專案，客戶要用Lattice FPGA來輸出特定電壓時序至他們的IC，然後再用ADC來讀取資料回傳至PC，希望我們可以幫他們設計電路並洗出開發版。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://adamshiau.github.io/FPGA/Lattice/%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9/%E9%9B%BB%E8%B7%AF%E5%8D%80%E5%A1%8A%E5%9C%96.png">
+<meta property="og:image" content="https://adamshiau.github.io/FPGA/Lattice/%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9/p01.png">
+<meta property="og:image" content="https://adamshiau.github.io/FPGA/Lattice/%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9/pgnd.png">
+<meta property="og:image" content="https://adamshiau.github.io/FPGA/Lattice/%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9/agnd.png">
+<meta property="og:image" content="https://adamshiau.github.io/FPGA/Lattice/%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9/dgnd.png">
+<meta property="og:image" content="https://adamshiau.github.io/FPGA/Lattice/%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9/p02.png">
+<meta property="og:image" content="https://adamshiau.github.io/FPGA/Lattice/%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9/adc.png">
+<meta property="og:image" content="https://adamshiau.github.io/FPGA/Lattice/%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9/timing.png">
+<meta property="og:image" content="https://adamshiau.github.io/FPGA/Lattice/%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9/t1.png">
+<meta property="og:image" content="https://adamshiau.github.io/FPGA/Lattice/%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9/t2.png">
 <meta property="article:published_time" content="2020-09-07T14:58:19.000Z">
-<meta property="article:modified_time" content="2020-09-07T15:35:04.326Z">
+<meta property="article:modified_time" content="2020-10-01T07:51:22.635Z">
 <meta property="article:author" content="Adam Shiau">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://adamshiau.github.io/FPGA/Lattice/%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9/%E9%9B%BB%E8%B7%AF%E5%8D%80%E5%A1%8A%E5%9C%96.png">
@@ -47,7 +56,7 @@
   };
 </script>
 
-  <title>專案介紹 | AdamShiau's blog 你好</title>
+  <title>Lattice FPGA 專案介紹 | AdamShiau's blog 你好</title>
   
 
 
@@ -166,7 +175,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          專案介紹
+          Lattice FPGA 專案介紹
         </h1>
 
         <div class="post-meta">
@@ -175,10 +184,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2020-09-07 22:58:19 / 修改時間：23:35:04" itemprop="dateCreated datePublished" datetime="2020-09-07T22:58:19+08:00">2020-09-07</time>
+              <time title="創建時間：2020-09-07 22:58:19" itemprop="dateCreated datePublished" datetime="2020-09-07T22:58:19+08:00">2020-09-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-10-01 15:51:22" itemprop="dateModified" datetime="2020-10-01T15:51:22+08:00">2020-10-01</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -219,6 +234,15 @@
 <li><p>FPGA:<br>使用LCMXO2-640HC，它的價格不到200元台幣，不過裡面的資源有點少，像我的這個專案到後來已經不夠用，第二版要換到2000HC的型號。<br>在選擇型號時可以先用compiler編譯，選擇不同的型號看看資源的使用量，畢竟資源越多的就越貴阿。型號選擇與資源可以參考Lattice網頁:<br><a target="_blank" rel="noopener" href="https://www.latticesemi.com/en/Products/FPGAandCPLD/MachXO2">https://www.latticesemi.com/en/Products/FPGAandCPLD/MachXO2</a><br>往下拉有不同型號的pinout表格，基本上相同package型號的pinout定義不會變。</p>
 </li>
 </ul>
+<p><strong><em>測試</em></strong></p>
+<p>拿到第一塊PCB時真的蠻悲劇的，在焊IC時才發現FT232H的footprint畫的太小導致焊不上去..囧<br>但也不可能什麼都不做就進下一版，只好趕快衝去光華商場買轉接版焊在上面再想辦法跳線到PCB。<br><img src="p01.png" alt="p01"><br>在開發的過程中發現ADC的SCK使用在12.5MHz時在把資料傳到PC時有時候會亂掉，<br>但在把頻率降到100KHz時就沒有這個現象了，可能是跳線的關係造成的雜訊吧?<br>在把該有的function都開發完畢後將第一版的錯誤與需改進部分都整理好後，<br>就開始第二版的設計與layout。<br>這次在layout時就花了比較多功夫，像是把power gnd、analog gnd、digital gnd都用各自的gnd<br>plane分開，這三個區域用到的IC盡量不要跨區，還有analog訊號走線盡量不要通過via換層。<br>然後在網路上看到PCB top 跟 bottom 外圈建議裸銅做Guard ring，然後內側2mm不要走線，可以<br>有效防EMI。在layout方面我的經驗不多，只能盡可能follow rules。<br>*power gnd<br><img src="pgnd.png" alt="pgnd"><br>*analog gnd<br><img src="agnd.png" alt="agnd"><br>*digital gnd<br><img src="dgnd.png" alt="dgnd"></p>
+<p>這次在設計時也參考了FT232H breakout board的概念，將FT232H的pin留排針引出，留下往後可單獨使用的option。<br>然後在設計FPGA開發版時我覺得很重要的是盡可能把空的腳位引出來，這樣在開發過程中才方便看訊號debug。<br>洗完的PCB上完IC後長這樣:<br><img src="p02.png" alt="p02"><br>果然沒有跳線的PCB看起來就是賞心悅目阿!<br>測試一下ADC發現SCK在12.5MHz時不會有資料錯亂的問題了，<br>然後量測DC電壓時的noise也小了很多，<br>下圖左邊是第一版，右邊是第二版，雜訊只剩下之前的1/5。<br><img src="adc.png" alt="adc"></p>
+<p>接著就剩下接收使用者輸入變數來控制輸出波形，<br>這部分基本就是參考FT232H讀/寫時序的datasheet然後寫成一個一次讀5byte的module，<br>第一個byte決定寫入哪個變數，後4個byte就是這個變數的值。<br>其中之一個波形如下圖，T1~T4為使用者輸入的參數:<br><img src="timing.png" alt="timing"><br>測試結果:</p>
+<ol>
+<li>[T1,T2,T3,T4] = [10, 40, 12, 5] us<br><img src="t1.png" alt="t1"></li>
+<li>[T1,T2,T3,T4] = [15, 50, 14, 7] us<br><img src="t2.png" alt="t2"></li>
+</ol>
+<p>到此這個專案也算開發完成了。</p>
 
     </div>
 
